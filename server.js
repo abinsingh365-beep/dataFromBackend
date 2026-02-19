@@ -1,0 +1,50 @@
+const http = require("http");
+const fs = require("fs");
+PORT = 4000
+
+const server = http.createServer((req, res) => {
+
+  const req_url = req.url;
+  console.log("req_url", req_url);
+  const parsed_url = new URL(req_url, `http://${req.headers.host}`);
+  // console.log("parsedd urlll :",parsed_url);
+
+
+
+
+  if (parsed_url.pathname === "/test") {
+    res.setHeader("200", { 'Content-Type': 'text/plain' });
+    res.end("test succesfull")
+  }
+
+
+  else if (parsed_url.pathname === "/") {
+    res.setHeader("200", { 'Content-Type': 'text/html' })
+    res.end(fs.readFileSync("./task1.html"));
+  }
+
+
+  else if (parsed_url.pathname === "/task1.css") {
+    res.writeHead("200", { 'Content-Type': "text/css" })
+    res.end(fs.readFileSync("./task1.css"))
+  }
+  else if (parsed_url.pathname === "/products") {
+    res.writeHead("200", { 'Content-Type': "application/json" })
+    res.end(fs.readFileSync("./products.json"))
+  }
+  else if (parsed_url.pathname === "/task1.js") {
+    res.writeHead("200", { 'content-type': "application/javascript" })
+    res.end(fs.readFileSync("./task1.js"))
+
+  }
+
+  else {
+    res.setHeader("404", { 'Content-Type': 'text/plain' })
+    res.end("not found! ")
+  }
+
+})
+
+server.listen(PORT, () => {
+  console.log(`server running at http://localhost:${PORT}`)
+})
