@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
   const req_url = req.url;
   console.log("req_url", req_url);
   const parsed_url = new URL(req_url, `http://${req.headers.host}`);
-  // console.log("parsedd urlll :",parsed_url);
+  console.log("parsedd urlll :",parsed_url);
 
 
 
