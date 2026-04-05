@@ -1,0 +1,33 @@
+body{
+font-family: Arial;
+background:black;
+}
+
+#products{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+margin-left: 80px;
+font-style:italic;
+color: yellow;
+}
+
+.card{
+width:200px;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 5px rgba(0,0,0,0.2);
+text-align:center;
+background-color: green;
+}
+
+img{
+width:100%;
+height:150px;
+object-fit:contain;
+}
+h1{
+    color: red;
+    text-align: center;
+}
